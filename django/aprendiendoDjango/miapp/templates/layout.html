@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        1er proyecto Django |
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <!--Para cargar los archivos de la carpeta static-->
+    {% load static %}
+    {% load filters %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <div id="logotipo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo Django">
+            <h1>Sitio web con Django</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'hola_mundo' %}">Hola mundo</a></li>
+            {# para agregar parametros se escriben a la derecha del nombre de la url #}
+            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+    <div id="content">
+        <div class="box">
+            <!--{{"aaaaaaaaa"|saludo|safe}}-->
+            {% block content %}
+            <!--<h4>Contenido por defecto para todas las templates</h4>-->
+            <!--Contenido variable a mostrar en la plantilla principal-->
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer>Alo si, {% now 'd-M-Y' %}</footer>
+</body>
+
+</html>

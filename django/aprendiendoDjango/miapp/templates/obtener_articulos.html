@@ -1,0 +1,19 @@
+<!--Para heredar-->
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+    <!--Para heredar algun contenido por defecto de la "clase padre"-->
+    {{ block.super }}
+
+    <ul>
+        {% for articulo in articulos %}
+            <li><p>{{articulo.title}} <a href={% url 'borrar_articulos' articulo.id %}>Eliminar</a></p></li>
+        {% endfor %}
+    </ul>
+    {% include 'fecha_actual.html' with dia="miercoles"%}
+
+{% endblock %}

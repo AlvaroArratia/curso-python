@@ -1,0 +1,39 @@
+<!--Para heredar-->
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+    <!--Para heredar algun contenido por defecto de la "clase padre"-->
+    {{ block.super }}
+
+    {% comment 'Esto es un comentario' %}
+        <h1>ASDAS</h1> {# No se mostrara #}
+    {% endcomment %}
+
+    {% if variable %}
+        {{variable}} {# Interpolacion de variable #}
+    {% else %}
+        <p>La variable no existe</p>
+    {% endif %}
+
+    <br/>
+    {{variable|default:"no hay nadita"}} 
+    
+    <ul>
+        {% for nombre in nombres %}
+            {# .first - .last para que retorne True o False si es el primer o ultimo objeto, respectivamente, en la lista #}
+            <li>{{nombre}} {{forloop.revcounter0}}</li>
+        {% empty %}
+            <strong>No hay nombres para mostrar</strong>
+        {% endfor %}
+    </ul>
+
+    <h1 class="title">Primer proyecto con Django</h1>
+    <p>Este es mi primer proyecto con Django</p>
+
+    {% include 'fecha_actual.html' with dia="miercoles"%}
+
+{% endblock %}

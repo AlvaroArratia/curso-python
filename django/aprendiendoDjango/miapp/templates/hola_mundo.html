@@ -1,0 +1,14 @@
+<!--Para heredar-->
+{% extends 'layout.html' %}
+
+{% block title %}
+    Hola mundo
+{% endblock %}
+
+{% block content %}
+    <!--Para heredar algun contenido por defecto de la "clase padre"-->
+    {{ block.super }}
+    <h1 class="title">Hola mundo, con Django</h1>
+    {# Filtro para sacar x caracter de una cadena de texto. Otros: lower, upper, random, length, striptags, wordcount, join, default #}
+    <p>{{ "Hola crack"|cut:" " }}</p>
+{% endblock %}
